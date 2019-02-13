@@ -41,7 +41,7 @@ function kute_design_files(){
 	wp_enqueue_style('kute_styles', get_stylesheet_uri());
 	wp_enqueue_style('responsive', get_theme_file_uri().'/css/responsive.css');
 	wp_enqueue_style('browser', get_theme_file_uri().'/css/browser.css');
-
+	wp_enqueue_style('theme', get_theme_file_uri().'/css/theme.css');
 
 
 	wp_enqueue_script('bootstrap', get_theme_file_uri().'/js/libs/bootstrap.min.js', array('jquery'), '1.0', true );
@@ -144,10 +144,7 @@ add_filter('woocommerce_show_page_title', function(){
 
 
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-
-
-remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
-remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 
 
 
@@ -160,167 +157,44 @@ add_filter('woocommerce_pagination_args', function( $pagination ){
 });
 
 
+remove_action('woocommerce_before_shop_loop_item_title','woocommerce_show_product_loop_sale_flash',10);
+remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail',10);
 
-remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
-remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
-
-remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);
-
-add_action('woocommerce_before_shop_loop_item', 'kute_template_loop_product_link_open', 10);
-
+add_action('woocommerce_before_shop_loop_item','kute_template_loop_product_link_open',10);
 function kute_template_loop_product_link_open(){
-	echo '<a href="' . get_the_permalink() . '" class="product-thumb-link">';
+	echo '<a href="'.get_the_permalink().'" class="product-thumb-link">';
 }
+add_action('woocommerce_before_shop_loop_item_title','kute_template_loop_product_thumbnail',10);
+function kute_template_loop_product_thumbnail(){
+?>
 
-
-
-add_action('woocommerce_before_shop_loop_item_title', 'kute_template_shop_thumbnail', 10);
-
-function kute_template_shop_thumbnail(){
-	?>
-	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
-
-		<?php 
-
+		<?php do_action( 'woocommerce_before_shop_loop_item' );?>
+		<?php
 			global $post, $product;
-
 			$attachment_ids = $product->get_gallery_image_ids();
-
-			$product_image_id = get_post_thumbnail_id( $post->ID );
-
-
-			
-
+			$product_image_id  = get_post_thumbnail_id($post->ID);
 
 			if($attachment_ids != array()){
 				$num = 1;
-				foreach($attachment_ids as $single_id){
-
-					
-					if($num == 1){
-						$class = 'class="active"';
-					}else{
-						$class = NULL;
+					foreach($attachment_ids as $single_id){
+						if($num == 1){
+							$class ='class="active"';
+						}else{
+							$class= NULL;
+						}
+						echo '<img data-color="black" '.$class.' src="'.wp_get_attachment_image_src( $single_id,'shop_single')[0].'" alt="">';
+						$num++;
 					}
-					echo '<img data-color="'.get_post_meta($single_id, '_product_image_color', true).'" '.$class.' src="'.wp_get_attachment_image_src($single_id, 'shop_single')[0].'" alt="">';
-
-					$num++;
-				}
-			}else{
-				echo '<img data-color="'.get_post_meta($product_image_id, '_product_image_color', true).'" class="active" src="'.wp_get_attachment_image_src($product_image_id, 'shop_single')[0].'" alt="">';
-			}
-			
 
 
-			
+			}else {
+				echo '<img data-color="black" class="active" src="'.wp_get_attachment_image_src( $product_image_id,'shop_single')[0].'" alt="">';
+			}	
 
-		 ?>
+		?>
 
-		
-	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
-	<a href="<?php the_permalink(); ?>" class="quickview-link plus fancybox.iframe"><span>quick view</span></a>
-	<?php
+		<?php do_action( 'woocommerce_after_shop_loop_item' );?>
+		<a href="quick-view.html" class="quickview-link plus fancybox.iframe"><span>quick view</span></a>
+											
+<?php
 }
-
-
-
-
-
-
-// add additional field to image uploader 
-
-add_filter('attachment_fields_to_edit', 'kute_edit_product_image_fields', 10, 2);
-
-function kute_edit_product_image_fields( $form_fields, $post ){
-
-	$form_fields['product_color'] = array(
-		'label' => 'Color',
-		'input' => 'text',
-		'value' => get_post_meta($post->ID, '_product_image_color', true),
-		'helps' => 'add product color here'
-	);
-	
-
-	return $form_fields;
-
-}
-
-
-add_filter('attachment_fields_to_save', 'kute_save_product_image_fields', 10, 2);
-
-
-function kute_save_product_image_fields($post, $form_fields){
-
-	if( isset( $form_fields['product_color'] ) ){
-		update_post_meta($post['ID'], '_product_image_color', $form_fields['product_color']);
-	}
-		
-
-
-}
-
-
-
-// shop page product title 
-
-add_action('woocommerce_shop_loop_item_title', 'kute_shop_page_product_title', 10);
-
-function kute_shop_page_product_title(){
-	?>
-		<h3 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-	<?php
-}
-
-
-
-// change price format 
-
-add_filter('woocommerce_format_sale_price', 'kute_format_price_change', 10, 3);
-
-function kute_format_price_change($price, $regular_price, $sale_price){
-	$price = '<ins>' . ( is_numeric( $sale_price ) ? wc_price( $sale_price ) : $sale_price ) . '</ins><del>' . ( is_numeric( $regular_price ) ? wc_price( $regular_price ) : $regular_price ) . '</del> ';
-	return $price;
-}
-
-
-
-// blank price
-
-add_action('woocommerce_after_shop_loop_item_title', 'kute_button_icons', 15);
-
-function kute_button_icons(){
-	?>
-		<div class="product-extra-link">
-			<?php 
-
-			global $product;
-
-			$args = array(
-				'quantity' => 1,
-				'class'    => implode( ' ', array_filter( array(
-						'product_type_' . $product->get_type(),
-						$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-						$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
-				) ) ),
-			);
-
-
-			wc_get_template( 'loop/add-to-cart.php', $args ); ?>
-			<a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i><span>Wishlist</span></a>
-			<a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i><span>Compare</span></a>
-		</div>
-	<?php
-}
-
-
-
-// add to cart icon 
-
-remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
-
-
-// catelog ordering 
-
-remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-
-

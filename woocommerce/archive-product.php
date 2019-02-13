@@ -56,58 +56,20 @@ get_header( 'shop' ); ?>
 				<div class="sort-paginav pull-right">
 					<div class="sort-bar select-box">
 						<label>Sort By:</label>
-						<form class="woocommerce-ordering" method="get">
-							<select name="orderby" class="orderby">
-								<?php 
-
-								$catalog_orderby_options = array(
-									'menu_order' => __( 'Position', 'woocommerce' ),
-									'popularity' => __( 'Popular', 'woocommerce' ),
-									'rating'     => __( 'Rating', 'woocommerce' ),
-									'date'       => __( 'Recent', 'woocommerce' ),
-									'price'      => __( 'Price', 'woocommerce' ),
-									
-								);
-
-								$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : '';
-
-								foreach ( $catalog_orderby_options as $id => $name ) : ?>
-									<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
-								<?php endforeach; ?>
-							</select>
-							<?php wc_query_string_form_fields( null, array( 'orderby', 'submit' ) ); ?>
-						</form>
-
+						<select>
+							<option value="">position</option>
+							<option value="">price</option>
+						</select>
 					</div>
 					<div class="show-bar select-box">
 						<label>Show:</label>
-						<form class="woocommerce-ordering" method="get">
-							<select name="per_page" class="orderby">
-								<?php 
-								global $wp_query;
-								$total = $wp_query->found_posts;
-								$last_num = 0;
-								$per_page = isset( $_GET['per_page'] ) ? $_GET['per_page'] : get_option('posts_per_page');
-								for( $num = 1; $num <= $total; $num++ ) : ?>
-									<?php if ($num % 5 === 0): ?>
-										<option value="<?php echo $num; ?>" <?php selected($per_page, $num) ?>>
-											<?php echo $num; ?>
-										</option>
-									<?php $last_num = $num; ?>
-									<?php endif; ?>
-									
-								<?php endfor; ?>
-
-								<?php if ($last_num != $total): ?>
-									<option value="<?php echo $total; ?>" <?php echo $num; ?>" <?php selected($per_page, $total) ?>><?php echo $total; ?></option>
-								<?php endif ?>
-									
-								
-							</select>
-						</form>
+						<select>
+							<option value="">20</option>
+							<option value="">12</option>
+							<option value="">24</option>
+						</select>
 					</div>
 					<div class="pagi-bar">
-					
 						<?php
 							/**
 							 * woocommerce_after_shop_loop hook.
@@ -138,16 +100,7 @@ get_header( 'shop' ); ?>
 
 				<?php woocommerce_product_subcategories(); ?>
 
-				<?php 
-
-				$per_page = isset( $_GET['per_page'] ) ? $_GET['per_page'] : get_option('posts_per_page');
-
-				$products = new WP_Query(array(
-					'post_type' => 'product',
-					'posts_per_page' => $per_page
-				));
-
-				while ( $products->have_posts() ) : $products->the_post(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
 						/**

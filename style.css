@@ -1,8 +1,8 @@
 /*
 Theme Name: Kute Shop
 Version: 1.0
-Author: Raihan
-Author URI: raihanislamcse.me
+Author: Sujan
+Author URI: https://facebook.com/groups/softtechit
 Description: This is a test purpose theme made by sujan
 tags: ecommerce, multipurpose
 */
@@ -861,7 +861,7 @@ li.menu-item-has-children:hover > .sub-menu {
   top: 0;
   width: 40px;
   z-index: 9;
-  background-image: url("images/theme/icon-search.png");
+  background-image: url("../images/theme/icon-search.png");
   background-repeat: no-repeat;
   background-position: center center;
   transition: all 0.5s ease-out 0s;
@@ -2600,13 +2600,13 @@ li.menu-item-has-children:hover > .sub-menu {
   width: 40px;
 }
 .contact-footer-box.footer-box p.formule-address::before {
-  background: rgba(0, 0, 0, 0) url("images/home4/for1.png") no-repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url("../images/home4/for1.png") no-repeat scroll 0 0;
 }
 .contact-footer-box.footer-box p.formule-phone::before {
-  background: rgba(0, 0, 0, 0) url("images/home4/for2.png") no-repeat scroll left 4px;
+  background: rgba(0, 0, 0, 0) url("../images/home4/for2.png") no-repeat scroll left 4px;
 }
 .contact-footer-box.footer-box p.formule-email::before {
-  background: rgba(0, 0, 0, 0) url("images/home4/for3.png") no-repeat scroll left 4px;
+  background: rgba(0, 0, 0, 0) url("../images/home4/for3.png") no-repeat scroll left 4px;
 }
 .contact-footer-box.footer-box p.formule-address {
   margin-bottom: 15px;
@@ -2807,10 +2807,10 @@ li.menu-item-has-children:hover > .sub-menu {
   -webkit-transition: all 0.5s ease-out 0s;
 }
 .view-type a.grid-view::after {
-  background-image: url("images/theme/icon-grid.png");
+  background-image: url("../images/theme/icon-grid.png");
 }
 .view-type a.list-view::after {
-  background-image: url("images/theme/icon-list.png");
+  background-image: url("../images/theme/icon-list.png");
 }
 .view-type a.active::after,
 .view-type a:hover::after {
@@ -2838,7 +2838,7 @@ li.menu-item-has-children:hover > .sub-menu {
   position: relative;
   text-align: left;
   text-transform: capitalize;
-  background-image: url("images/theme/icon-select.png");
+  background-image: url("../images/theme/icon-select.png");
   background-repeat: no-repeat;
   background-position: right 10px center;
   cursor: pointer;
@@ -3020,7 +3020,7 @@ li.menu-item-has-children:hover > .sub-menu {
   visibility: visible;
 }
 .product-rate {
-  background-image: url("images/theme/rating-stars.png");
+  background-image: url("../images/theme/rating-stars.png");
   background-position: 0 -100px;
   background-repeat: repeat-x;
   height: 14px;
@@ -3032,7 +3032,7 @@ li.menu-item-has-children:hover > .sub-menu {
 .product-rating {
   height: 14px;
   background-repeat: repeat-x;
-  background-image: url("images/theme/rating-stars.png");
+  background-image: url("../images/theme/rating-stars.png");
   background-position: 0 0;
 }
 /*End Grid Ajax*/
@@ -4071,7 +4071,7 @@ li.menu-item-has-children:hover > .sub-menu {
   display: none;
 }
 .config-detail .detail-countdown .time_circles {
-  background: rgba(0, 0, 0, 0) url("images/theme/clock.png") no-repeat scroll left center;
+  background: rgba(0, 0, 0, 0) url("../images/theme/clock.png") no-repeat scroll left center;
   display: inline-block;
   padding-left: 15px;
   position: relative;
@@ -4748,7 +4748,7 @@ a.protect-icon:hover {
   color: #ff3e3e;
 }
 .average-rate {
-  background-image: url(images/theme/total-star.png);
+  background-image: url(../images/theme/total-star.png);
   background-position: 0 -42px;
   background-repeat: repeat-x;
   height: 42px;
@@ -4759,7 +4759,7 @@ a.protect-icon:hover {
 .average-rating {
   height: 42px;
   background-repeat: repeat-x;
-  background-image: url(images/theme/total-star.png);
+  background-image: url(../images/theme/total-star.png);
   background-position: 0 0;
 }
 .total-rate-statistic.table > div {
@@ -5100,7 +5100,7 @@ a.protect-icon:hover {
   margin-bottom: 45px;
 }
 .block-quote {
-  background: rgba(0, 0, 0, 0) url("images/theme/quote.png") no-repeat scroll left top;
+  background: rgba(0, 0, 0, 0) url("../images/theme/quote.png") no-repeat scroll left top;
   margin: 30px 0 45px;
   max-width: 940px;
   padding-left: 85px;
@@ -6758,7 +6758,7 @@ a.protect-icon:hover {
   padding: 20px 0 10px;
 }
 .flash-label {
-  background: #333333 url("images/home2/index.html") repeat scroll 0 0;
+  background: #333333 url("../images/home2/index.html") repeat scroll 0 0;
   font-size: 10px;
   height: 50px;
   padding-left: 18px;
@@ -7955,7 +7955,7 @@ a.protect-icon:hover {
 												Home 5
 ************************************************************************************************************/
 .banner-topheader {
-  background: rgba(0, 0, 0, 0) url("images/home5/top-banner.jpg") no-repeat scroll center top / auto 100%;
+  background: rgba(0, 0, 0, 0) url("../images/home5/top-banner.jpg") no-repeat scroll center top / auto 100%;
   padding: 28px 0;
 }
 .inner-top-banner {
@@ -8363,7 +8363,7 @@ a.protect-icon:hover {
 .countdown-master.flip-clock-wrapper ul li a div div.inn {
   font-size: 18px;
   color: #fff600;
-  background: #333333 url("images/home5/bg-time.png") repeat-x scroll center center;
+  background: #333333 url("../images/home5/bg-time.png") repeat-x scroll center center;
   border-radius: 4px;
 }
 .countdown-master.flip-clock-wrapper ul li a div.down {
@@ -9052,7 +9052,7 @@ a.protect-icon:hover {
   padding-top: 14px;
 }
 .whyus-testimo {
-  background-image: url("images/home7/bg-prl.jpg");
+  background-image: url("../images/home7/bg-prl.jpg");
   background-position: center center;
   background-size: 100% auto;
   background-attachment: fixed;
@@ -9100,7 +9100,7 @@ a.protect-icon:hover {
   margin-right: -15px;
 }
 .item-testimo7 {
-  background: rgba(0, 0, 0, 0) url("images/home7/tes-icon.png") no-repeat scroll left top;
+  background: rgba(0, 0, 0, 0) url("../images/home7/tes-icon.png") no-repeat scroll left top;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 15px;
   padding-top: 40px;
@@ -10674,7 +10674,7 @@ a.protect-icon:hover {
   -webkit-transition: all 0.5s ease-out 0s;
 }
 .header-nav11 {
-  background: rgba(0, 0, 0, 0) url("images/photos/home11/bg-1.jpg") no-repeat scroll center center / auto 100%;
+  background: rgba(0, 0, 0, 0) url("../images/photos/home11/bg-1.jpg") no-repeat scroll center center / auto 100%;
   padding: 20px 0;
 }
 .main-nav.main-nav11 > ul > li > a {
@@ -10745,7 +10745,7 @@ a.protect-icon:hover {
   margin-left: 15px;
 }
 .content-top11 {
-  background: rgba(0, 0, 0, 0) url("images/home11/bg-slide.jpg") no-repeat scroll center center / auto 100%;
+  background: rgba(0, 0, 0, 0) url("../images/home11/bg-slide.jpg") no-repeat scroll center center / auto 100%;
   margin-bottom: 20px;
   padding: 20px 0;
 }
@@ -11402,7 +11402,7 @@ a.protect-icon:hover {
   position: relative;
 }
 .supper-deal12::after {
-  background: rgba(0, 0, 0, 0) url("images/theme/bg-star.png") no-repeat scroll center top;
+  background: rgba(0, 0, 0, 0) url("../images/theme/bg-star.png") no-repeat scroll center top;
   content: "";
   height: 50px;
   position: absolute;
@@ -11998,7 +11998,7 @@ a.protect-icon:hover {
   display: inline-block;
 }
 .title-box13 .title30 span::before {
-  background: url("images/theme/icon-clock.png") no-repeat center center;
+  background: url("../images/theme/icon-clock.png") no-repeat center center;
   position: absolute;
   top: -14px;
   left: 0;
@@ -12801,7 +12801,7 @@ a.protect-icon:hover {
   margin-right: -15px;
 }
 .testimo-slider14 {
-  background: rgba(0, 0, 0, 0) url("images/home14/icon2.png") no-repeat scroll left top;
+  background: rgba(0, 0, 0, 0) url("../images/home14/icon2.png") no-repeat scroll left top;
   margin-left: 20px;
   max-width: 570px;
   padding-left: 30px;
@@ -12856,7 +12856,7 @@ a.protect-icon:hover {
   vertical-align: middle;
 }
 .content-top15 {
-  background: rgba(0, 0, 0, 0) url("images/home15/bg-slide.jpg") no-repeat scroll center top;
+  background: rgba(0, 0, 0, 0) url("../images/home15/bg-slide.jpg") no-repeat scroll center top;
   background-size: auto 100%;
   padding: 40px 0;
 }
@@ -12955,7 +12955,7 @@ a.protect-icon:hover {
   padding: 0 20px;
 }
 .from-blog15 {
-  background: rgba(0, 0, 0, 0) url("images/home15/bg-prl.jpg") no-repeat fixed center center;
+  background: rgba(0, 0, 0, 0) url("../images/home15/bg-prl.jpg") no-repeat fixed center center;
   margin-bottom: 50px;
   padding: 40px 0 30px;
 }
@@ -13449,7 +13449,7 @@ a.protect-icon:hover {
   top: 9px;
 }
 .deal-box16 .deals-cowndown {
-  background: #333333 url("images/home16/bg-clock.png") no-repeat scroll center top 10px;
+  background: #333333 url("../images/home16/bg-clock.png") no-repeat scroll center top 10px;
   color: #fff;
   padding-top: 20px;
   position: absolute;
@@ -13912,7 +13912,7 @@ a.protect-icon:hover {
   position: relative;
 }
 .deal-pro17 .detail-countdown::before {
-  background: rgba(0, 0, 0, 0) url("images/home17/bg-clock.png") no-repeat scroll center center;
+  background: rgba(0, 0, 0, 0) url("../images/home17/bg-clock.png") no-repeat scroll center center;
   content: "";
   height: 34px;
   left: 0;
@@ -14041,7 +14041,7 @@ a.protect-icon:hover {
   height: 38px;
 }
 .smart-search17 .smart-search-form input[type="submit"] {
-  background-image: url("images/home17/icon-search.png");
+  background-image: url("../images/home17/icon-search.png");
   right: -1px;
   top: -1px;
   width: 50px;
@@ -14281,11 +14281,11 @@ a.protect-icon:hover {
   z-index: 99;
 }
 .poly-slider .owl-theme .owl-controls .owl-buttons div.owl-prev {
-  background-image: url("images/home18/icon-prev.png");
+  background-image: url("../images/home18/icon-prev.png");
   background-position: left 15px center;
 }
 .poly-slider .owl-theme .owl-controls .owl-buttons div.owl-next {
-  background-image: url("images/home18/icon-next.png");
+  background-image: url("../images/home18/icon-next.png");
   background-position: right 15px center;
 }
 .poly-slider .owl-theme .owl-controls .owl-buttons div::before,
@@ -14420,7 +14420,7 @@ a.protect-icon:hover {
   line-height: 56px;
 }
 .deal-timer18 .flash-countdown::before {
-  background: #f9c13a url("images/home18/sand-clock.png") no-repeat scroll center center;
+  background: #f9c13a url("../images/home18/sand-clock.png") no-repeat scroll center center;
   content: "";
   height: 58px;
   left: -1px;
@@ -14463,7 +14463,7 @@ a.protect-icon:hover {
   margin-top: 10px;
 }
 .about-store18 {
-  background: rgba(0, 0, 0, 0) url("images/home18/bg-prl1.jpg") no-repeat fixed center center;
+  background: rgba(0, 0, 0, 0) url("../images/home18/bg-prl1.jpg") no-repeat fixed center center;
   padding: 100px 0;
   margin-bottom: 50px;
 }
@@ -14534,7 +14534,7 @@ a.protect-icon:hover {
   margin-top: -100px;
 }
 .latest-news18 {
-  background: rgba(0, 0, 0, 0) url("images/home18/bg-prl2.jpg") no-repeat fixed center center;
+  background: rgba(0, 0, 0, 0) url("../images/home18/bg-prl2.jpg") no-repeat fixed center center;
   padding: 100px 0;
 }
 .latestnews-slider18 {
@@ -15209,7 +15209,7 @@ a.protect-icon:hover {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: rgba(0, 0, 0, 0) url("images/shop/arrow-down.png") no-repeat scroll right 15px center;
+  background: rgba(0, 0, 0, 0) url("../images/shop/arrow-down.png") no-repeat scroll right 15px center;
 }
 .form-my-account select option {
   text-transform: capitalize;
@@ -15398,7 +15398,7 @@ a.protect-icon:hover {
 }
 .top-banner19 {
   height: 80px;
-  background: url("images/home19/bn-top.jpg") no-repeat center center;
+  background: url("../images/home19/bn-top.jpg") no-repeat center center;
 }
 .contact-top19 {
   margin: 11px 0 0;
@@ -16181,7 +16181,7 @@ td.product-info-total .product-info .desc {
   width: 670px;
   padding: 50px;
   position: relative;
-  background: #185a7c url(images/theme/popup-coupon.png) no-repeat right 10px bottom 25px;
+  background: #185a7c url(../images/theme/popup-coupon.png) no-repeat right 10px bottom 25px;
 }
 .coupon-light-box .close-light-box {
   position: absolute;
@@ -16281,21 +16281,4 @@ body{
 
 .main-nav ul li.has-mega-menu .mega-menu > .row > ul > li > a{
   font-weight: bold;
-}
-
-
-/* view cart */
-
-.product-extra-link {
-  position: relative;
-}
-
-.product-extra-link .added_to_cart{
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  display: block;
-  overflow: hidden;
-  width: 100%;
-
 }
