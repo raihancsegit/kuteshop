@@ -28,7 +28,10 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 		esc_attr( isset( $quantity ) ? $quantity : 1 ),
 		esc_attr( $product->get_id() ),
 		esc_attr( $product->get_sku() ),
-		esc_attr( isset( $class ) ? $class : 'button' ),
-		esc_html( $product->add_to_cart_text() )
+		esc_attr( isset( $class ) ? $class. ' addcart-link' : 'addcart-link' ),
+		'<i class="fa fa-shopping-basket" aria-hidden="true"></i><span>'.esc_html( $product->add_to_cart_text() ).'</span>'
 	),
 $product );
+
+
+

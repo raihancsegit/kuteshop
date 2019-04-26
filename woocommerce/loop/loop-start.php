@@ -17,4 +17,4 @@
  */
 ?>
 <div class="grid-pro-color">
-	<div class="row">
+<div class="row">

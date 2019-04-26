@@ -28,16 +28,32 @@ if ( $wp_query->max_num_pages <= 1 ) {
 ?>
 
 	<?php
+
+		global $product;
+
+		$pp_page = isset( $_GET['per_page'] ) ? $_GET['per_page'] : 0;
+
+		$totalproduct = $wp_query->found_posts;
+
+		$currentpage = max( 1, get_query_var( 'paged' ) );
+
+		if($pp_page == 0){
+			$totalpage = $wp_query->max_num_pages;
+		}else{
+			$totalpage = ceil( $totalproduct / $pp_page );
+		}
+
+
 		$paginate = paginate_links( apply_filters( 'woocommerce_pagination_args', array(
 			'base'         => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
 			'format'       => '',
 			'add_args'     => false,
 			'current'      => max( 1, get_query_var( 'paged' ) ),
-			'total'        => $wp_query->max_num_pages,
+			'total'        => $totalpage,
 			'prev_text'    => '<i class="fa fa-caret-left" aria-hidden="true"></i>',
 			'next_text'    => '<i class="fa fa-caret-right" aria-hidden="true"></i>',
 			'type'         => 'list',
-			'end_size'     => 3,
+			'end_size'     => 0,
 			'mid_size'     => 3,
 		) ) );
 

@@ -41,7 +41,7 @@ function kute_design_files(){
 	wp_enqueue_style('kute_styles', get_stylesheet_uri());
 	wp_enqueue_style('responsive', get_theme_file_uri().'/css/responsive.css');
 	wp_enqueue_style('browser', get_theme_file_uri().'/css/browser.css');
-	wp_enqueue_style('theme', get_theme_file_uri().'/css/theme.css');
+
 
 
 	wp_enqueue_script('bootstrap', get_theme_file_uri().'/js/libs/bootstrap.min.js', array('jquery'), '1.0', true );
@@ -55,6 +55,7 @@ function kute_design_files(){
 	wp_enqueue_script('popup', get_theme_file_uri().'/js/libs/popup.js', array('jquery'), '1.0', true );
 	wp_enqueue_script('theme', get_theme_file_uri().'/js/theme.js', array('jquery'), '1.0', true );
 	wp_enqueue_script('custom', get_theme_file_uri().'/js/custom.js', array('jquery'), '1.0', false );
+	wp_enqueue_script('flexslider', get_theme_file_uri().'/js/libs/jquery.flexslider.js', array('jquery'), '1.0', false );
 
 
 }
@@ -106,6 +107,9 @@ add_action('wp_update_nav_menu_item', function($dbid, $menuid){
 
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper');
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end');
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart',10);
+remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title',10);
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating',5);
 
 
 
@@ -182,13 +186,13 @@ function kute_template_loop_product_thumbnail(){
 						}else{
 							$class= NULL;
 						}
-						echo '<img data-color="black" '.$class.' src="'.wp_get_attachment_image_src( $single_id,'shop_single')[0].'" alt="">';
+						echo '<img data-color="'.get_post_meta($single_id,'_product_image_color',true).'" '.$class.' src="'.wp_get_attachment_image_src( $single_id,'shop_single')[0].'" alt="">';
 						$num++;
 					}
 
 
 			}else {
-				echo '<img data-color="black" class="active" src="'.wp_get_attachment_image_src( $product_image_id,'shop_single')[0].'" alt="">';
+				echo '<img data-color="'.get_post_meta($product_image_id,'_product_image_color',true).'" class="active" src="'.wp_get_attachment_image_src( $product_image_id,'shop_single')[0].'" alt="">';
 			}	
 
 		?>
@@ -198,3 +202,71 @@ function kute_template_loop_product_thumbnail(){
 											
 <?php
 }
+
+add_filter( 'attachment_fields_to_edit', 'kute_filter_function_name', 10, 2 );
+add_filter( 'attachment_fields_to_save', 'kute_filter_function_save', 10, 2 );
+
+function kute_filter_function_name($form_fields,$post){
+	$form_fields['product_color'] = array(
+		'label' => 'Color',
+		'input' => 'text',
+		'helps' => 'add product color here..',
+		'value' => get_post_meta($post->ID,'_product_image_color',true)
+	);
+
+	return $form_fields;
+}
+
+function kute_filter_function_save($post,$form_fields){
+	if(isset($form_fields['product_color'])){
+
+		update_post_meta($post['ID'],'_product_image_color',$form_fields['product_color']);
+	}
+}
+
+
+//title
+
+add_action('woocommerce_shop_loop_item_title','kute_shop_product_title',10);
+function kute_shop_product_title(){
+	?>
+		<h3 class="product-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+	<?php
+}
+
+add_filter('woocommerce_format_sale_price','kute_format_price_change',10,3);
+function kute_format_price_change($price,$regular_price,$sale_price){
+$price = '<ins>'.(is_numeric($sale_price) ? wc_price($sale_price) : $sale_price).'</ins><del>'.(is_numeric($regular_price) ? wc_price($regular_price) : $regular_price).'</del>';
+
+return $price;
+}
+add_action('woocommerce_after_shop_loop_item_title','kute_button_add',15);
+function kute_button_add(){
+    ?>
+    <div class="product-extra-link">
+        <?php
+        global $product;
+        $defaults = array(
+            'quantity' => 1,
+            'class'    => implode( ' ', array_filter( array(
+
+                'product_type_' . $product->get_type(),
+                $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+            ) ) ),
+        );
+        wc_get_template( 'loop/add-to-cart.php', $defaults );
+        ?>
+
+
+        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i><span>Wishlist</span></a>
+        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i><span>Compare</span></a>
+    </div>
+<?php
+
+
+}
+
+remove_action('woocommerce_after_single_product','woocommerce_output_related_products',20);
+
+

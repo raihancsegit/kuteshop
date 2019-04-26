@@ -33,8 +33,12 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 	'images',
 ) );
 ?>
-<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<figure class="woocommerce-product-gallery__wrapper">
+
+
+<!-- <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;"> -->
+
+
+	<!-- <figure class="woocommerce-product-gallery__wrapper">
 		<?php
 		$attributes = array(
 			'title'                   => get_post_field( 'post_title', $post_thumbnail_id ),
@@ -59,5 +63,37 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 
 		do_action( 'woocommerce_product_thumbnails' );
 		?>
-	</figure>
-</div>
+	</figure> -->
+
+
+	<div class="gallery-without-sidebar">
+		<div class="slider flexslider">
+			
+		<div class="flex-viewport" style="overflow: hidden; position: relative;">
+			<ul class="slides">
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/8.jpg" alt="" draggable="false"></li>
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/7.jpg" alt="" draggable="false"></li>
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/6.jpg" alt="" draggable="false"></li>
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/5.jpg" alt="" draggable="false"></li>
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/4.jpg" alt="" draggable="false"></li>
+				<li class=""><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/3.jpg" alt="" draggable="false"></li>
+			</ul>
+		</div>
+		<ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#"><i class="fa fa-angle-left"></i></a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1"><i class="fa fa-angle-right"></i></a></li></ul></div>
+		<div class="carousel flexslider">
+			
+		<div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+				<li class="" style="width: 13.3333px; margin-right: 0px; float: left; display: block;"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/8.jpg" alt="" draggable="false"></a></li>
+				<li style="width: 13.3333px; margin-right: 0px; float: left; display: block;" class=""><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/3.jpg" alt="" draggable="false"></a></li>
+				<li style="width: 13.3333px; margin-right: 0px; float: left; display: block;" class=""><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/2.jpg" alt="" draggable="false"></a></li>
+				<li style="width: 13.3333px; margin-right: 0px; float: left; display: block;" class=""><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/4.jpg" alt="" draggable="false"></a></li>
+				<li style="width: 13.3333px; margin-right: 0px; float: left; display: block;" class=""><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/5.jpg" alt="" draggable="false"></a></li>
+				<li style="width: 13.3333px; margin-right: 0px; float: left; display: block;" class="flex-active-slide"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/photos/homeware/7.jpg" alt="" draggable="false"></a></li>
+			</ul></div></div>
+	</div>
+
+
+
+
+
+<!-- </div> -->
