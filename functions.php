@@ -269,4 +269,24 @@ function kute_button_add(){
 
 remove_action('woocommerce_after_single_product','woocommerce_output_related_products',20);
 
+add_filter('woocommerce_product_get_rating_html','change_html_rating',10,3);
+function change_html_rating($html, $rating, $count)
+{
+    if (0 < $rating) {
+        $html .= wc_get_star_rating_html( $rating , $count );
+    } else {
+        $html = '';
+    }
+    return $html;
+
+}
+
+add_filter('woocommerce_get_star_rating_html','change_html_rating2',10,3);
+function change_html_rating2($html, $rating, $count)
+{
+
+        $html = '<div style="width:'.(($rating/5)*100).' %" class="product-rating"></div>';
+        return $html;
+
+}
 
